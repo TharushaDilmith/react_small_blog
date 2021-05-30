@@ -1,20 +1,24 @@
 import {useState} from 'react';
 const Home = () => {
-    const[name,setName] = useState('Didula');
-    const[age,setAge] = useState(22);
+    const[blogs,setBlogs] = useState([
+        {title: 'Getting started with github',body:'Install github...',author:'Tharusha',id:1},
+        {title :'Getting started with mongoDB',body:'Login with mongodb...',author:'Didula',id:2},
+        {title:'Getting started with nodejs',body:'Install nodejs... ',author:'Pamal',id:3}
+        ]);
+    
 
-    const handleClick= (name)=>{
-        console.log("Success ");
-        setName('Tharusha');
-        setAge(23);
-    }
+    
 
     return ( 
 
         <div className="home">
-            <h2>Home page</h2>
-            <p>{name} is {age} years old</p>
-            <button onClick={handleClick}>Click me</button>
+            {blogs.map((blog)=>(
+                <div className="blog-preview"key={blog.id}>
+                <h2>{blog.title}</h2>
+                <p>Written by {blog.author}</p>
+                </div>
+            ))}
+            
         </div>
      );
 }
